@@ -168,6 +168,8 @@ Blue Casual Shirt
 
 ```
 
+---
+
 📸 Output Images
 
 <img width="620" height="287" alt="Screenshot 2026-06-29 161711" src="https://github.com/user-attachments/assets/9b3a3743-3828-4ce4-a250-4b6dcff679cf" />
