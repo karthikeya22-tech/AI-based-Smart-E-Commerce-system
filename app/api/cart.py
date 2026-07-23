@@ -1,6 +1,8 @@
 # Cart endpoints
 from fastapi import APIRouter
 
+from app.services.cart_service import cart_service
+
 router = APIRouter(
     prefix="/cart",
     tags=["Cart"]
@@ -9,7 +11,4 @@ router = APIRouter(
 
 @router.get("/")
 def get_cart():
-
-    return {
-        "message": "Cart API under development"
-    }
+    return cart_service.get_cart()

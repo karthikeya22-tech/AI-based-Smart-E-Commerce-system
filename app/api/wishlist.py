@@ -1,6 +1,8 @@
 # Wishlist endpoints
 from fastapi import APIRouter
 
+from app.services.wishlist_service import wishlist_service
+
 router = APIRouter(
     prefix="/wishlist",
     tags=["Wishlist"]
@@ -9,7 +11,4 @@ router = APIRouter(
 
 @router.get("/")
 def get_wishlist():
-
-    return {
-        "message": "Wishlist API under development"
-    }
+    return wishlist_service.get_wishlist()

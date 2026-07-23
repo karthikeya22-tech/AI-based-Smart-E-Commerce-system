@@ -1,8 +1,8 @@
 # Product endpoints
 from fastapi import APIRouter, Depends, HTTPException
 
-from app.database import supabase
 from app.dependencies import pagination
+from app.services.product_service import product_service
 
 router = APIRouter(
     prefix="/products",
@@ -12,35 +12,17 @@ router = APIRouter(
 
 @router.get("/")
 def get_products(page=Depends(pagination)):
-    response = (
-        supabase
-        .table("products")
-        .select("*")
-        .range(
-            page["offset"],
-            page["offset"] + page["limit"] - 1
-        )
-        .execute()
-    )
-
-    return response.data
+    return product_service.list_products(page["page"], page["limit"])
 
 
 @router.get("/{product_id}")
 def get_product(product_id: int):
+    product = product_service.get_product(product_id)
 
-    response = (
-        supabase
-        .table("products")
-        .select("*")
-        .eq("id", product_id)
-        .execute()
-    )
-
-    if not response.data:
+    if not product:
         raise HTTPException(
             status_code=404,
             detail="Product not found"
         )
 
-    return response.data[0]
+    return product

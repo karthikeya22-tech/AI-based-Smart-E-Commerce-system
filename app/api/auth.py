@@ -1,6 +1,8 @@
 # Auth endpoints
 from fastapi import APIRouter
 
+from app.services.auth_service import auth_service
+
 router = APIRouter(
     prefix="/auth",
     tags=["Authentication"]
@@ -9,7 +11,4 @@ router = APIRouter(
 
 @router.get("/status")
 def auth_status():
-
-    return {
-        "authentication": "Supabase Auth integration pending"
-    }
+    return auth_service.get_status()

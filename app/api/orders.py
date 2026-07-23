@@ -1,6 +1,8 @@
 # Order endpoints
 from fastapi import APIRouter
 
+from app.services.order_service import order_service
+
 router = APIRouter(
     prefix="/orders",
     tags=["Orders"]
@@ -9,7 +11,4 @@ router = APIRouter(
 
 @router.get("/")
 def get_orders():
-
-    return {
-        "message": "Orders API under development"
-    }
+    return order_service.get_orders()
