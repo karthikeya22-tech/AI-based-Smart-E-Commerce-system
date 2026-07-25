@@ -1,1 +1,0 @@
-# Export embeddings script

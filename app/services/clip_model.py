@@ -1,1 +1,0 @@
-# CLIP model wrapper
